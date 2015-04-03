@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>Класация</h2>
+
+  <table id="leaderboard">
+    {% for user in data %}
+      <tr class="user"><th>{{ user.username }}</th><td>{{ user.rating }}</td></tr>
+    {% endfor %}
+  </table>
+{% endblock %}
+

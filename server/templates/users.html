@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>Потребители</h2>
+
+  <ul id="users">
+    {% for user in data %}
+      <li class="user">
+        <img class="avatar" src="/avatar/{{ user.username }}" />
+        {{ user.username }}
+        <button data-user="{{user.username}}" class="{{ 'blocked' if user.blocked else '' }}"><span>un</span>block</button>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+
+{% block scripts %}
+<script src={{ url_for('static', filename='jquery-1.11.2.min.js') }}></script>
+<script>
+$('button').click(function (e) {
+  $.post((this.className == 'blocked' ? 'unblock' : 'block') + '/' + $(this).data('user'), function(e){
+    location.reload();
+    // console.log(e);
+  });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,149 @@
+form input#submit {
+	font-size: 15px;
+	display: block;
+	color: white;
+	margin-top: 10px;
+	background-color: gray;
+	border: 1px solid black;
+	padding: 5px;
+	font-weight: bold;
+	text-align: center;
+}
+
+form input#password {
+	display: block;
+}
+
+h2 {
+    border-bottom: 2px solid white;
+    padding-bottom: 1px;
+}
+
+#wrapper{
+	width: 970px;
+	margin: 0 auto;
+	background-color: rgba(51,40,96,0.5);
+}
+
+header {
+	height: 150px;
+	background-image: url("header_image.jpg");
+	background-repeat: no-repeat;
+	padding-left: 12px;
+	padding-right: 8px;
+
+}
+
+header h1{
+	float: left;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 32px;
+	margin-top: 30px;
+}
+
+nav{
+	width: 700px;
+	float: right;
+	text-align: right;
+	padding-top: 45px;
+	}
+
+nav a{
+	color: white;
+	text-decoration:none;
+	font-weight: bold;
+	font-size: 18px;
+	padding: 6px;
+	margin-right: 2px;
+	background-color: rgba(32,25,59, 0.7);
+}
+
+nav a:hover{
+	background-color: rgb(32,25,59);
+}
+
+body{
+	color: white;
+	background-color: rgb(32,25,59);
+	font-family: Arial, Halvetica, San-Serif;
+}
+
+#contents {
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-bottom: 12px;
+	color: white;
+}
+
+#info{
+	font-size: 22px;
+	text-align: center;
+}
+
+form label {
+	font-size: 1.2em;
+	font-weight: bold;
+	display: block;
+	padding: 10px 0;
+}
+
+form input#submit {
+	display: block;
+	color: white;
+	margin-top: 10px;
+	background-color: gray;
+	border: 1px solid black;
+	padding: 5px;
+	font-weight: bold;
+	text-align: center;
+}
+
+form input#password {
+	display: block;
+}
+
+h2 {
+	border-bottom: 1px solid white;
+}
+
+pre {
+	margin: 0;
+	white-space: pre-wrap;
+}
+#messages {
+	width: 90%;
+	margin-left: 5%;
+	margin-bottom: 10px;
+}
+#new-message-form textarea {
+	display: inline-block;
+	vertical-align: middle;
+	width: 80% !important;
+	margin-left: 5%;
+	min-height: 40px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+#new-message-form button {
+	display: inline-block;
+	vertical-align: middle;
+	width: 10%;
+	height: 40px;
+}
+
+.avatar {
+	width: 68px;
+	height: 68px;
+}
+
+.user button span {
+	display: none;
+}
+.user .blocked span {
+	display: inline;	
+}
+#load-messages {
+	text-align: center;
+	margin: auto;
+}

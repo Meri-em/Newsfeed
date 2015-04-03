@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+  <title>NewsFeed</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+  <div id="wrapper">
+    <header>
+      <h1>Newsfeed</h1>
+      <nav>
+        <a href={{ url_for("home") }}>Начало</a>
+        {% if 'user' in session %}
+        <a href={{ url_for("messages") }}>Съобщения</a>
+        <a href={{ url_for("leaderboard") }}>Класация</a>
+        <a href={{ url_for("users") }}>Потребители</a>
+        <a href={{ url_for("profile") }}>Профил</a>
+        <a href={{ url_for("logout") }}>Изход</a>
+        {% else %}
+        <a href={{ url_for("login") }}>Вход</a>
+        <a href={{ url_for("register") }}>Регистрация</a>
+        {% endif %}
+      </nav>
+    </header>
+    <div id="contents">
+      {% block content %}
+      {% endblock  %}
+    </div>
+  </div>
+
+  {% block scripts %}
+  {% endblock  %}
+</body>
+</html>

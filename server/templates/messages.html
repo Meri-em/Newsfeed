@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% block content %}
+
+  <h2>Съобщения</h2>
+  <div id="load-messages"><button id="load-more">Зареди още 20</button></div>
+  <table id="messages">
+    {% for message in data %}
+      <tr><th><img class="avatar" src="/avatar/{{ message.author }}" /></th><td><pre>{{ message.message }}<pre></td></tr>
+    {% endfor %}
+  </table>
+  <form id="new-message-form">
+    <textarea></textarea>
+    <button>Send</button>
+  </form>
+{% endblock %}
+
+{% block scripts %}
+<script src={{ url_for('static', filename='jquery-1.11.2.min.js') }}></script>
+<script>
+(function () {
+  $.ajaxSetup({dataType: 'json', contentType: 'application/json'});
+  var tag = function (tagname) {
+    return function(content) {
+      return '<' + tagname + '>' + content + '</' + tagname + '>';
+    }
+  }, td = tag('td'), tr = tag('tr');
+
+  function load(messages){
+    $('#messages').html(messages.map(function(e){
+      return tr([
+        '<img class="avatar" src="/avatar/' + e.author + '">',
+        e.message,
+        e.likes,
+        '<button data-id="'+ e._id +'">like</button>'
+      ].map(td));
+    }));
+  }
+  $(document).on('click', '#messages button', function(){
+    $.ajax({
+      type: 'POST',
+      url: '/like/'+ $(this).data('id'),
+      success: function(){
+        $.get(location.pathname + '.json', function(data){
+          load(data);
+        });
+      }
+    });
+  });
+  function update(){
+    $.get(location.pathname + '.json', function(data){
+      load(data);
+      setTimeout(update, 5000);
+    });
+  }
+
+  update();
+
+  $('#new-message-form').submit(function(e){
+    e.preventDefault();
+    var message = this.children[0];
+    if (!message.value.match(/^\s*$/)) // don't send whitespace only
+      $.post('messages/new', JSON.stringify({message: message.value}), load);
+    message.value = '';
+  })
+  .find('textarea').keydown(function(e){
+    if (!e.shiftKey && e.which === 13) { // Enter
+      e.preventDefault();
+      $('#new-message-form').submit();
+    }
+  });
+  $('#load-more').click(function(){
+    var path = location.pathname.split('/');
+    location.pathname = path[1] + '/' + ((path[2] | 20) + 20);
+  });
+})();
+</script>
+{% endblock %}

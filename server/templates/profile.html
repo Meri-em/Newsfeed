@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
+	<h2>Профил</h2>
+	<img class="avatar" src="/avatar/{{username}}" />
+	<p>username: <strong>{{username}}</strong></p>
+  	<form action="" method="post" enctype="multipart/form-data">
+  		<label for=file>Постави аватар</label>
+  		<input type=file name=file>
+        <input type=submit value="Изпрати">
+  	</form>
+{% endblock %}
