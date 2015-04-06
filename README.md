@@ -1,4 +1,7 @@
-# Newsfeed - web based chat at real time
+# Newsfeed
+
+Web based chat at real time
+
 ## Short description
 
 - The system supports registration with username and password. After the logging in each user sees a common chat stream. 
@@ -14,6 +17,6 @@
 ## How to use
 - Install [python 3.4](https://www.python.org/download/releases/3.4.0/)
 - Install [MongoDB](http://docs.mongodb.org/manual/installation/)
-- git clone https://github.com/Meri-em/Newsfeed.git
-- mongod --dbpath="../db"
-- python main.py
+- `git clone https://github.com/Meri-em/Newsfeed.git`
+- `mongod --dbpath="../db"`
+- `python main.py`
